@@ -1,0 +1,16 @@
+为了保证其他项目参与人员成功的运行构建和部署，需要保证 gradle 版本的一致性，有两种方式
+
+1. 可以通过在 build.gradle 中添加 task，定义 gradle version，然后执行该 task 就可以生成 gradle/wrapper 目录，下面有 
+-rw-r--r--  1 tangdong  staff    62K Mar 27 20:26 gradle-wrapper.jar
+-rw-r--r--  1 tangdong  staff   250B Mar 27 20:26 gradle-wrapper.properties
+
+build.gradle
+
+# wrapperown 不能和 gradle 自身的 wrapper task 重名
+task wrapperown(type: Wrapper) {
+	gradleVersion = '8.2'
+}
+
+在使用 task 生成的 gradlew 脚本执行 build 等 task 时会先从 gradle-wrapper.properties 定义的地址现在指定版本的 gradle，然后执行对应的 task。该下载动作只执行一次
+
+2. 直接执行 gradle wrapper 就可以生成和执行 wrapper task 版本一致的 gradle 目录
