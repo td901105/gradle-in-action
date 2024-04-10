@@ -1,0 +1,29 @@
+介绍完plugin的声明之后，再回到plugins这段DSL代码
+
+plugins {
+    id 'com.android.application'
+}
+
+我们可以理解plugins是一个函数，plugins { } 里面接收的是一个闭包Closure，也可以这么写：
+
+plugins ({
+    id 'com.android.application'
+})
+
+在Groovy中，当函数的最后一个参数或者只有一个参数是闭包时，是可以写在参数括号外面的，所以还可以继续还原：
+
+plugins () {
+    id 'com.android.application'
+}
+
+在Groovy中，当函数只有一个参数的时候，是可以省略括号的，所以就回到了我们最初的DSL代码：
+
+plugins {
+    id 'com.android.application'
+}
+
+
+————————————————
+版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
+                        
+原文链接：https://blog.csdn.net/yechaoa/article/details/130257106
